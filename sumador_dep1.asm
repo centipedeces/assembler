@@ -25,10 +25,10 @@ _start:
     mov rdx, 8
     syscall
 
-    movzx r8, byte [buffer] ; antes: mov r8b, [burrer]
+    movzx r8, byte [buffer] ; antes: mov r8b, [buffer]
     sub r8, 48
 
-    mov rzx, 1
+    mov rax, 1
     mov rdi, 1
     mov rsi, msg2
     mov rdx, l2
@@ -41,10 +41,12 @@ _start:
     syscall
 
     movzx rax, byte [buffer] ; antes mov al, [buffer]
-    sub rax, r8
+    sub rax, 48
+
+    add rax, r8
 
     add rax, 48
-    mov [bufffer], al
+    mov [buffer], al
     mov byte [buffer+1], 10
 
     mov rax, 1
